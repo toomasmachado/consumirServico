@@ -1,6 +1,8 @@
 package br.eti.urbano.mobile.exemploretrofit2.activities;
 
 import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,9 +17,9 @@ import retrofit2.Callback;
 public class adapter extends BaseAdapter {
 
     private final List<Post> posts;
-    private final Activity activity;
+    private final Context activity;
 
-    public adapter(List<Post> posts, Activity activity) {
+    public adapter(List<Post> posts, Context activity) {
         this.posts = posts;
         this.activity = activity;
     }
@@ -39,20 +41,23 @@ public class adapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = activity.getLayoutInflater()
-                .inflate(R.layout.activity_post, parent, false);
+
+          if (convertView == null) {
+              convertView  = LayoutInflater.from(activity)
+                      .inflate(R.layout.activity_list, parent, false);
+          }
         Post post = posts.get(position);
 
-        TextView usuarioId = (TextView) view.findViewById(R.id.lista_curso_personalizada_idUsu);
-        TextView Id = (TextView) view.findViewById(R.id.lista_curso_personalizada_id);
-        TextView title = (TextView) view.findViewById(R.id.lista_curso_personalizada_title);
-        TextView body = (TextView) view.findViewById(R.id.lista_curso_personalizada_body);
+        TextView usuarioId = (TextView) convertView.findViewById(R.id.lista_curso_personalizada_idUsu);
+        TextView Id = (TextView) convertView.findViewById(R.id.lista_curso_personalizada_id);
+        TextView title = (TextView) convertView.findViewById(R.id.lista_curso_personalizada_title);
+        TextView body = (TextView) convertView.findViewById(R.id.lista_curso_personalizada_body);
 
         usuarioId.setText(post.getUserId());
         Id.setText(post.getId());
         title.setText(post.getTitle());
         body.setText(post.getBody());
 
-        return view;
+        return convertView;
     }
 }

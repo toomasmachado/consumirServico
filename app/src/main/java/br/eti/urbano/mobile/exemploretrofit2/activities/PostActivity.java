@@ -25,9 +25,8 @@ public class PostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_list);
 
-        listPost = findViewById(R.id.listPost);
 
         /*Pega a referencia do ENDPOINT e do converter(gson)
         * */
@@ -51,8 +50,10 @@ public class PostActivity extends AppCompatActivity {
                 //ArrayAdapter<Post> adapter = new ArrayAdapter<Post>(getApplicationContext(), android.R.layout.simple_list_item_1 , posts);
                 //ListView lv = listPost;
                 //lv.setAdapter(adapter);
-                adapter adapter = new adapter(posts, PostActivity.this );
-                listPost.setAdapter(adapter);
+                adapter adapter = new adapter(posts, PostActivity.this);
+
+                ListView listView = findViewById(R.id.listPost);
+                listView.setAdapter(adapter);
 
             }
 
