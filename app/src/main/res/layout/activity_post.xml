@@ -6,4 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".activities.PostActivity">
 
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lista_curso_personalizada_idUsu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Id Usuário"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/lista_curso_personalizada_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/lista_curso_personalizada_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/lista_curso_personalizada_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="body"
+            android:textSize="20dp" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

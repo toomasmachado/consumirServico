@@ -3,6 +3,9 @@ package br.eti.urbano.mobile.exemploretrofit2.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.List;
 
@@ -17,10 +20,14 @@ import retrofit2.Retrofit;
 
 public class PostActivity extends AppCompatActivity {
 
+    private ListView listPost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+        listPost = findViewById(R.id.listPost);
 
         /*Pega a referencia do ENDPOINT e do converter(gson)
         * */
@@ -39,6 +46,14 @@ public class PostActivity extends AppCompatActivity {
                 //Se deu certo executa este método
                 List<Post> posts = response.body();
                 posts.forEach(p-> Log.i  ("fasam",p.toString()));
+                posts.addAll(response.body());
+
+                //ArrayAdapter<Post> adapter = new ArrayAdapter<Post>(getApplicationContext(), android.R.layout.simple_list_item_1 , posts);
+                //ListView lv = listPost;
+                //lv.setAdapter(adapter);
+                adapter adapter = new adapter(posts, PostActivity.this );
+                listPost.setAdapter(adapter);
+
             }
 
             @Override
@@ -46,6 +61,8 @@ public class PostActivity extends AppCompatActivity {
                 //Houve erro é executado este método.
             }
         });
+
+
 
     }
 }
